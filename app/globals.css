@@ -1,9 +1,7 @@
 @import "tailwindcss";
 
 /* 1. ASSIGNER INTER À TAILWIND (Indispensable en Tailwind v4) */
-@theme {
-  --font-sans: 'Inter', sans-serif;
-}
+/* Removed @theme to avoid unknown at-rule issues in standard CSS parsing. */
 
 /* 2. INJECTER LES POLICES PHYSIQUES VIA BASE */
 @layer base {
@@ -47,6 +45,7 @@
 
 /* --- LE RESTE DE TON CODE RESTE INCHANGÉ --- */
 :root {
+  --font-sans: 'Inter', sans-serif;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
