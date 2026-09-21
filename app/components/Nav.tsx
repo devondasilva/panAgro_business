@@ -40,7 +40,7 @@ const Nav: React.FC = () => {
       <nav 
         className={`fixed top-0 left-0 w-full z-[200] transition-all duration-500 ${
           isScrolled || isOpen 
-            ? 'py-3 bg-white shadow-md border-b border-gray-100' 
+            ? 'py-3 bg-white shadow-md ' 
             : 'py-5 bg-transparent'
         }`}
       >
@@ -197,8 +197,6 @@ const Nav: React.FC = () => {
           </div>
         </div>
       )}
-
-      <div className={`${isScrolled ? 'h-16' : 'h-20 sm:h-24'} transition-all duration-500`}></div>
     </>
   );
 };
