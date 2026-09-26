@@ -1,4 +1,14 @@
 @import "tailwindcss";
+@config "../tailwind.config.ts";
+
+/* Jetons de thème Tailwind v4 (CSS-first) — permet d'écrire bg-panagro-green,
+   text-panagro-dark, etc. en plus des valeurs arbitraires hexadécimales déjà
+   utilisées dans le reste du projet. */
+@theme {
+  --color-panagro-dark: #1A2F15;
+  --color-panagro-green: #8DC63F;
+  --color-panagro-light: #F8FAF5;
+}
 
 /* 1. ASSIGNER INTER À TAILWIND (Indispensable en Tailwind v4) */
 /* Removed @theme to avoid unknown at-rule issues in standard CSS parsing. */

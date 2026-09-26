@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Cpu, 
@@ -11,11 +11,44 @@ import {
   Sun,
   TrendingUp,
   MapPin,
-  Globe
+  Globe,
+  Check
 } from 'lucide-react';
 
 const FranchiseSaketePage: React.FC = () => {
   const brandColor = "#8DC63F";
+
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [sent, setSent] = useState(false);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setError(null);
+    setLoading(true);
+    try {
+      const res = await fetch("/api/franchise-leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, phone, email, message }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error ?? "Une erreur est survenue.");
+        return;
+      }
+      setSent(true);
+      setName(""); setPhone(""); setEmail(""); setMessage("");
+    } catch {
+      setError("Impossible de contacter le serveur. Réessayez.");
+    } finally {
+      setLoading(false);
+    }
+  }
 
   const packContents = [
     { 
@@ -67,9 +100,9 @@ const FranchiseSaketePage: React.FC = () => {
               </p>
               
               <div className="flex flex-wrap gap-4">
-                <button className="px-8 py-5 bg-[#1A2F15] text-white font-black rounded-2xl flex items-center gap-3 hover:bg-[#8DC63F] transition-all group">
+                <a href="#contact" className="px-8 py-5 bg-[#1A2F15] text-white font-black rounded-2xl flex items-center gap-3 hover:bg-[#8DC63F] transition-all group">
                   Demander le dossier investisseur <Download size={18} className="group-hover:translate-y-1 transition-transform" />
-                </button>
+                </a>
               </div>
             </div>
             
@@ -168,17 +201,28 @@ const FranchiseSaketePage: React.FC = () => {
           <p className="text-gray-500">Candidatez pour l'une des 5 zones exclusives ouvertes dans le département du Plateau.</p>
         </div>
         
-        <form className="bg-white p-10 rounded-[3rem] shadow-xl border border-gray-100 space-y-4" onSubmit={(e) => e.preventDefault()}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input type="text" placeholder="Nom Complet" className="w-full p-4 rounded-2xl bg-gray-50 border-2 border-transparent focus:border-[#8DC63F] outline-none font-bold transition-all text-[#1A2F15]" />
-            <input type="text" placeholder="Téléphone (WhatsApp)" className="w-full p-4 rounded-2xl bg-gray-50 border-2 border-transparent focus:border-[#8DC63F] outline-none font-bold transition-all text-[#1A2F15]" />
+        {sent ? (
+          <div className="bg-[#8DC63F]/10 border-2 border-[#8DC63F]/30 p-10 rounded-[3rem] flex items-start gap-4">
+            <Check className="text-[#8DC63F] shrink-0 mt-1" size={24} />
+            <div>
+              <p className="font-black text-[#1A2F15] mb-1">Candidature envoyée !</p>
+              <p className="text-sm text-gray-600">Notre équipe vous recontacte sous 48h pour la suite du processus.</p>
+            </div>
           </div>
-          <input type="email" placeholder="Email" className="w-full p-4 rounded-2xl bg-gray-50 border-2 border-transparent focus:border-[#8DC63F] outline-none font-bold transition-all text-[#1A2F15]" />
-          <textarea placeholder="Décrivez votre intérêt pour la zone de Sakété..." rows={4} className="w-full p-4 rounded-2xl bg-gray-50 border-2 border-transparent focus:border-[#8DC63F] outline-none font-bold transition-all text-[#1A2F15]"></textarea>
-          <button className="w-full py-5 bg-[#1A2F15] text-white font-black uppercase tracking-[0.2em] rounded-2xl hover:bg-[#8DC63F] hover:text-[#1A2F15] transition-all flex items-center justify-center gap-3 text-xs">
-            Envoyer ma candidature <ArrowRight size={18} />
+        ) : (
+        <form onSubmit={handleSubmit} className="bg-white p-10 rounded-[3rem] shadow-xl border border-gray-100 space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input required value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder="Nom Complet" className="w-full p-4 rounded-2xl bg-gray-50 border-2 border-transparent focus:border-[#8DC63F] outline-none font-bold transition-all text-[#1A2F15]" />
+            <input required value={phone} onChange={(e) => setPhone(e.target.value)} type="text" placeholder="Téléphone (WhatsApp)" className="w-full p-4 rounded-2xl bg-gray-50 border-2 border-transparent focus:border-[#8DC63F] outline-none font-bold transition-all text-[#1A2F15]" />
+          </div>
+          <input required value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email" className="w-full p-4 rounded-2xl bg-gray-50 border-2 border-transparent focus:border-[#8DC63F] outline-none font-bold transition-all text-[#1A2F15]" />
+          <textarea value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Décrivez votre intérêt pour la zone de Sakété..." rows={4} className="w-full p-4 rounded-2xl bg-gray-50 border-2 border-transparent focus:border-[#8DC63F] outline-none font-bold transition-all text-[#1A2F15]"></textarea>
+          {error && <p className="text-sm text-red-600 bg-red-50 rounded-2xl px-4 py-3">{error}</p>}
+          <button disabled={loading} className="w-full py-5 bg-[#1A2F15] text-white font-black uppercase tracking-[0.2em] rounded-2xl hover:bg-[#8DC63F] hover:text-[#1A2F15] transition-all flex items-center justify-center gap-3 text-xs disabled:opacity-60">
+            {loading ? "Envoi…" : "Envoyer ma candidature"} <ArrowRight size={18} />
           </button>
         </form>
+        )}
       </section>
 
     </div>

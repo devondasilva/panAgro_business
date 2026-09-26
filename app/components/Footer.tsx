@@ -1,3 +1,7 @@
+"use client";
+
+
+
 import React from 'react';
 import { Leaf, ArrowRight, Globe, ShieldCheck } from 'lucide-react';
 

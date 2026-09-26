@@ -1,0 +1,42 @@
+[
+  {
+    "id": "offer-decouverte",
+    "title": "Pack Découverte",
+    "durationLabel": "1 mois",
+    "roiPercent": 5,
+    "minAmountFCFA": 50000,
+    "benefits": ["Panier bio de Sakété offert", "Rapport de suivi par WhatsApp", "Retrait prioritaire"],
+    "featured": false,
+    "active": true
+  },
+  {
+    "id": "offer-croissance",
+    "title": "Pack Croissance",
+    "durationLabel": "3 mois",
+    "roiPercent": 8,
+    "minAmountFCFA": 250000,
+    "benefits": ["2 paniers bio par mois", "Visite privée de la ferme", "Accès plateforme de suivi"],
+    "featured": false,
+    "active": true
+  },
+  {
+    "id": "offer-recolte",
+    "title": "Pack Récolte",
+    "durationLabel": "6 mois",
+    "roiPercent": 12,
+    "minAmountFCFA": 1000000,
+    "benefits": ["Distribution mensuelle Cotonou/Porto-Novo", "Arbre à votre nom à Sakété", "Droit de vote sur les cultures"],
+    "featured": true,
+    "active": true
+  },
+  {
+    "id": "offer-ecosysteme",
+    "title": "Pack Écosystème",
+    "durationLabel": "1 an",
+    "roiPercent": 18,
+    "minAmountFCFA": 3000000,
+    "benefits": ["Séjour en éco-studio inclus", "Dividendes annuels garantis", "Membre du comité consultatif"],
+    "featured": false,
+    "active": true
+  }
+]

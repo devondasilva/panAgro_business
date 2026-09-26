@@ -1,0 +1,68 @@
+[
+  {
+    "id": "prod-poulet-goliath",
+    "name": "Poulet Goliath (prêt à cuire)",
+    "category": "Élevage & Volaille",
+    "description": "Poulet goliath robuste, élevage conduit avec un suivi sanitaire rigoureux et une alimentation naturelle. Vendu prêt à cuire.",
+    "priceFCFA": 6500,
+    "images": [],
+    "stock": 40,
+    "active": true,
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "prod-mouton",
+    "name": "Mouton sur pied",
+    "category": "Élevage & Volaille",
+    "description": "Mouton sélectionné, idéal pour les fêtes et cérémonies. Disponible sur réservation, retrait à la ferme ou livraison à Cotonou.",
+    "priceFCFA": 85000,
+    "images": [],
+    "stock": 12,
+    "active": true,
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "prod-escargots",
+    "name": "Escargots géants africains (kg)",
+    "category": "Spécialités & Vivriers",
+    "description": "Escargots géants africains issus de notre élevage, vendus au kilogramme, fraîcheur garantie.",
+    "priceFCFA": 4000,
+    "images": [],
+    "stock": 60,
+    "active": true,
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "prod-mais",
+    "name": "Maïs sec (sac de 50 kg)",
+    "category": "Spécialités & Vivriers",
+    "description": "Maïs sec récolté sur nos parcelles de Sakété, sac de 50 kg, qualité contrôlée.",
+    "priceFCFA": 15000,
+    "images": [],
+    "stock": 80,
+    "active": true,
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "prod-oeufs",
+    "name": "Plateau de 30 œufs",
+    "category": "Élevage & Volaille",
+    "description": "Œufs frais de nos poules élevées en plein air, plateau de 30.",
+    "priceFCFA": 2500,
+    "images": [],
+    "stock": 100,
+    "active": true,
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "prod-tubercules",
+    "name": "Panier de tubercules (igname, manioc)",
+    "category": "Spécialités & Vivriers",
+    "description": "Assortiment de tubercules fraîchement récoltés — igname et manioc — panier de 10 kg.",
+    "priceFCFA": 6000,
+    "images": [],
+    "stock": 35,
+    "active": true,
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  }
+]
